@@ -1,0 +1,31 @@
+<div class="container">
+  <div id="list" class="row">
+    <div class="col-md-12 p-3">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="row">
+          <div class="col-md-12">
+            <label for="addTask">
+              <h3>Add a new item: </h3>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-10">
+            <input type="text" id="task" class="form-control" ngModel required name="task">
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-success" [disabled]="!f.valid">Add</button>
+          </div>
+        </div>
+      </form>
+      <div id="item" class="row d-flex" *ngFor="let item of todoList; let i=index">
+        <div class="col-10 p-1">
+          <p class="m-1"><strong><em>{{ item.task }}</em></strong></p>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-danger" (click)=onRemove(i)> X </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
